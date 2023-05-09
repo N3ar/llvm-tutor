@@ -28,7 +28,10 @@
 #include "llvm/IR/LegacyPassManager.h"
 #include "llvm/Passes/PassBuilder.h"
 #include "llvm/Passes/PassPlugin.h"
+#define LLVM_16 0
+#if LLVM_16
 #include "llvm/Transforms/IPO/PassManagerBuilder.h"
+#endif
 
 using namespace llvm;
 

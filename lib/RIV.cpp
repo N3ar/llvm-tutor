@@ -75,9 +75,12 @@ RIV::Result RIV::buildRIV(Function &F, NodeTy CFGRoot) {
   // variables and input arguments.
   auto &EntryBBValues = ResultMap[&F.getEntryBlock()];
 
+#define LLVM_16 0
+#if LLVM_16
   for (auto &Global : F.getParent()->getGlobalList())
     if (Global.getValueType()->isIntegerTy())
       EntryBBValues.insert(&Global);
+#endif
 
   for (Argument &Arg : F.args())
     if (Arg.getType()->isIntegerTy())
